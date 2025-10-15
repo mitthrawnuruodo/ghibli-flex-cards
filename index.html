@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Ghibli Films</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Studio Ghibli Films</h1>
+    <p class="sub">Fetched from <code>https://ghibliapi.vercel.app/films</code></p>
+  </header>
+
+  <main class="container">
+    <div id="status" role="status" aria-live="polite">Loading…</div>
+    <section id="cards" class="cards" aria-label="Film cards"></section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Built with async/await, plain JS &amp; Flexbox.</small>
+  </footer>
+</body>
+</html>

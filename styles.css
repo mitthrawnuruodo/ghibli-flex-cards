@@ -1,0 +1,137 @@
+:root {
+  --bg: #0b1220;
+  --panel: #121a2b;
+  --ink: #e8eef6;
+  --muted: #a7b1c2;
+  --teal: #4fd1c5;
+  --card: #0f172a;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(1200px 600px at 15% 10%, #0f1b33 10%, var(--bg) 60%);
+  line-height: 1.5;
+}
+
+.site-header, .site-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.site-header h1 {
+  margin: 0.25rem 0 0.25rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.site-header .sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem;
+}
+
+#status {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+/* Flexbox card layout */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Each card */
+.card {
+  background: linear-gradient(180deg, var(--panel), var(--card));
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  flex: 1 1 260px;
+  max-width: 340px;
+  padding: 0; /* so the image can be truly edge-to-edge */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* hide any image overflow */
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset,
+              0 10px 30px rgba(0,0,0,0.25);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(0,0,0,0.35);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.meta {
+  margin: 0.25rem 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.badges {
+  margin-top: auto; /* push badges to bottom */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge {
+  background: rgba(79, 209, 197, 0.12);
+  border: 1px solid rgba(79, 209, 197, 0.38);
+  color: var(--teal);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+/* Status row + spinner */
+#status {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.loader {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.18);
+  border-top-color: var(--teal);
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
