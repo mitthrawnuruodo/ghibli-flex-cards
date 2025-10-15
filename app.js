@@ -7,7 +7,16 @@ const safeText = (value) =>
   (value === null || value === undefined || value === "" ? "—" : value);
 
 function cardFor(film) {
-  const { title, director, producer, release_date, running_time, rt_score, image } = film;
+  //console.log(film);
+  const { 
+    title, 
+    director, 
+    original_title, 
+    release_date, 
+    running_time, 
+    rt_score, 
+    image 
+  } = film; // Destructure film object
 
   const wrap = document.createElement("article");
   wrap.className = "card";
@@ -22,6 +31,9 @@ function cardFor(film) {
 
   const h2 = document.createElement("h2");
   h2.textContent = safeText(title);
+
+  //const h3 = document.createElement("h3");
+  //h3.textContent = `Original Title: ${safeText(original_title)}`;
 
   const meta = document.createElement("p");
   meta.className = "meta";
@@ -40,7 +52,9 @@ function cardFor(film) {
 
   badges.append(runtime, score);
   content.append(h2, meta, badges);
+  //content.append(h2, h3, meta, badges);
   wrap.append(poster, content);
+  //console.log (wrap.innerHTML);
   return wrap;
 }
 
@@ -52,14 +66,16 @@ async function loadFilms() {
 
     const res = await fetch(API, { headers: { "Accept": "application/json" } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    //console.log(res);
 
     const films = await res.json();
     films.sort((a, b) => Number(a.release_date) - Number(b.release_date));
+    //console.log(films);
 
     cardsEl.innerHTML = "";
     films.forEach(film => cardsEl.appendChild(cardFor(film)));
 
-    statusEl.textContent = `Loaded ${films.length} films.`; 
+    statusEl.textContent = `Loaded ${films.length} films.`; // Shows status and removes spinner
   } catch (err) {
     console.error(err);
     statusEl.textContent = "Failed to load films. Please try again.";
