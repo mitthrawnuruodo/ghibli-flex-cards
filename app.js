@@ -10,11 +10,11 @@ function cardFor(film) {
   const { 
     title, 
     director, 
-    original_title, 
+    original_title_romanised, 
     release_date, 
     running_time, 
     rt_score, 
-    image 
+    image,
   } = film; // Destructure film object
 
   const wrap = document.createElement("article");
@@ -32,7 +32,7 @@ function cardFor(film) {
   h2.textContent = safeText(title);
 
   const h3 = document.createElement("h3");
-  h3.textContent = `Original Title: ${safeText(original_title)}`;
+  h3.textContent = `Original Title: ${safeText(original_title_romanised)}`;
 
   const meta = document.createElement("p");
   meta.className = "meta";
@@ -50,10 +50,11 @@ function cardFor(film) {
   score.textContent = `🍅 ${safeText(rt_score)}`;
 
   badges.append(runtime, score);
-  content.append(h2, meta, badges);
-  //content.append(h2, h3, meta, badges);
+  //content.append(h2, meta, badges);
+  content.append(h2, h3, meta, badges);
   wrap.append(poster, content);
-  //console.log (wrap.innerHTML);
+  //wrap.append(content);
+  console.log (wrap.innerHTML);
   return wrap;
 }
 
