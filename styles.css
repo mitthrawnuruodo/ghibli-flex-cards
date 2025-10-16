@@ -63,7 +63,7 @@ body {
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: var(--radius);
   flex: 1 1 260px;
-  max-width: 340px;
+  max-width: 240px;
   padding: 0; /* so the image can be truly edge-to-edge */
   display: flex;
   flex-direction: column;

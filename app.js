@@ -3,8 +3,7 @@ const cardsEl = document.getElementById("cards");
 const statusEl = document.getElementById("status");
 
 // Helper: safely return a text value, or "—" if it's null, undefined, or empty
-const safeText = (value) =>
-  (value === null || value === undefined || value === "" ? "—" : value);
+const safeText = (v) => (v === null || v === undefined || v === "" ? "—" : v);
 
 function cardFor(film) {
   //console.log(film);
@@ -71,6 +70,7 @@ async function loadFilms() {
     const films = await res.json();
     films.sort((a, b) => Number(a.release_date) - Number(b.release_date));
     //console.log(films);
+    //console.log(films[0]);
 
     cardsEl.innerHTML = "";
     films.forEach(film => cardsEl.appendChild(cardFor(film)));
