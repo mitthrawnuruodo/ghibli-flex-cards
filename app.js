@@ -31,8 +31,8 @@ function cardFor(film) {
   const h2 = document.createElement("h2");
   h2.textContent = safeText(title);
 
-  //const h3 = document.createElement("h3");
-  //h3.textContent = `Original Title: ${safeText(original_title)}`;
+  const h3 = document.createElement("h3");
+  h3.textContent = `Original Title: ${safeText(original_title)}`;
 
   const meta = document.createElement("p");
   meta.className = "meta";
